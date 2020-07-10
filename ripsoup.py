@@ -38,6 +38,14 @@ def save_image_data(images):
         f.write(content)
 
 
+def get_src(url):
+    path = Path(url)
+    if path.stem.endswith("_500"):
+        extension = path.suffix
+        url = url[:-(len(extension) + len("_500"))] + extension
+    return url
+
+
 def get_page_data(url, images, soups, session):
     fail_counter = -1
     response = None
@@ -59,9 +67,9 @@ def get_page_data(url, images, soups, session):
             ]
         )
         for image in post.select(".content .description img"):
-            images.append(image.attrs.get("src"))
+            images.append(get_src(image.attrs.get("src")))
         for image in post.select(".content .imagecontainer img"):
-            images.append(image.attrs.get("src"))
+            images.append(get_src(image.attrs.get("src")))
 
     next_url = soup.select(".pagination a.more")
     if next_url:
