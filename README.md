@@ -13,6 +13,7 @@ Read first: Caveats
   script, too.
 - As most exporters, this script only retrieves image files (including gifs), no videos or text posts. Sorry bout that.
   Pull Requests welcome if you make them in the next days.
+- The soup has to be in pagination mode. No endless scrolling for this exporter, mouse wheels are expensive.
 - Might not work with NSFW soups, again, timely PRs welcome.
 - Images are downloaded as-is, with no reference to timing. You'll end up with a lot of images, but not enough metadata
   to reconstruct the chronology of your soup.
