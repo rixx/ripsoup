@@ -1,8 +1,8 @@
 ripsoup
 =======
 
-soup.io is shutting down, this time for real. Get your soup while it's still somewhat tepid and not sucked into a black
-hole, there's a good internet citizen.
+soup.io is shutting down, this time for real. Get your soup while it's coolign down rapidly and about to be sucked into
+a black hole, there's a good internet citizen.
 
 Read first: Caveats
 -------------------
