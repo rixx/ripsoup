@@ -72,10 +72,12 @@ def get_page_data(url, images, soups, session):
         )
         for image in post.select(".content .description img"):
             src = get_src(image.attrs.get("src"))
+            if src:
+                images.append(src)
         for image in post.select(".content .imagecontainer img"):
             src = get_src(image.attrs.get("src"))
-        if src:
-            images.append(src)
+            if src:
+                images.append(src)
 
     next_url = soup.select(".pagination a.more")
     if next_url:
