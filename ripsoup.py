@@ -39,6 +39,14 @@ def save_image_data(images):
         f.write(content)
 
 
+def get_image_data():
+    if Path(IMAGE_FILE).exists():
+        with open(IMAGE_FILE, "r") as f:
+            content = f.read()
+        return content.split("\n")
+    return []
+
+
 def get_src(url):
     if not url:
         return
@@ -96,7 +104,7 @@ def get_all_data(start_url):
     current_url = start_url
     session = requests.Session()
     related_soups = set()
-    image_urls = list()
+    image_urls = get_image_data()
     while current_url:
         current_url, image_urls, related_soups = get_page_data(
             current_url, image_urls, related_soups, session=session,
