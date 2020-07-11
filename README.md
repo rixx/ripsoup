@@ -17,6 +17,8 @@ Read first: Caveats
 - Might not work with NSFW soups, again, timely PRs welcome.
 - Images are downloaded as-is, with no reference to timing. You'll end up with a lot of images, but not enough metadata
   to reconstruct the chronology of your soup.
+- To avoid overloading soup.io, the URL collection script uses exponential backoff and can be slow. Don't be a jerk and
+  hammer their servers. Please also use the recommended `-w2` option with wget for some space between file downloads.
 
 Usage
 -----
@@ -24,7 +26,7 @@ Usage
 Make a Python virtualenv, and install
 
 ```
-pip install requests beautifulsoup4
+pip install -r requirements.txt
 ```
 
 Run the script with your soup of choice:
@@ -36,7 +38,7 @@ python ripsoup.py myawesomesoupname
 Once it's done, go to `data/myawesomesoupname` and run
 
 ```
-wget -nc -i image_urls
+wget -nc -w2 -i image_urls
 ```
 
 and wait in happy trepidation. Will you make it before time runs out?

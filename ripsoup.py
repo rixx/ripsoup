@@ -19,6 +19,7 @@ import sys
 from contextlib import suppress
 from pathlib import Path
 
+import backoff
 import requests
 from bs4 import BeautifulSoup
 
@@ -46,15 +47,16 @@ def get_src(url):
     return url
 
 
+@backoff.on_exception(backoff.expo, Exception)
+def get_url(url, session):
+    response = session.get(url)
+    response.raise_for_status()
+    return response
+
+
 def get_page_data(url, images, soups, session):
     fail_counter = -1
-    response = None
-    while not response or not response.status_code == 200:
-        fail_counter += 1
-        with suppress(Exception):
-            response = session.get(url, timeout=10000)
-    if fail_counter > 1:
-        print(f"{fail_counter} fails before getting {url}")
+    response = get_url(url, session)
 
     soup = BeautifulSoup(response.content.decode(), "html.parser")
 
