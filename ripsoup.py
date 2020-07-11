@@ -79,8 +79,9 @@ def get_page_data(url, images, soups, session):
         next_url = f"https://{SOUP}.soup.io{next_url}" if next_url else None
 
     save_image_data(images)
-    with open(URL_FILE, "w+") as f:
-        f.write(next_url)
+    if next_url:
+        with open(URL_FILE, "w+") as f:
+            f.write(next_url)
 
     return next_url, images, soups
 
