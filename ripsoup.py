@@ -95,7 +95,7 @@ def get_all_data(start_url):
         current_url, image_urls, related_soups = get_page_data(
             current_url, image_urls, related_soups, session=session,
         )
-        print(".", end="")
+        print(".", end="", flush=True)
 
     with open(SOUP_FILE, "w+") as f:
         f.write("\n".join(sorted(list(related_soups))))
