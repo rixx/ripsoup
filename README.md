@@ -14,11 +14,12 @@ Read first: Caveats
 - As most exporters, this script only retrieves image files (including gifs), no videos or text posts. Sorry bout that.
   Pull Requests welcome if you make them in the next days.
 - The soup has to be in pagination mode. No endless scrolling for this exporter, mouse wheels are expensive.
-- Might not work with NSFW soups, again, timely PRs welcome.
 - Images are downloaded as-is, with no reference to timing. You'll end up with a lot of images, but not enough metadata
   to reconstruct the chronology of your soup.
 - To avoid overloading soup.io, the URL collection script uses exponential backoff and can be slow. Don't be a jerk and
   hammer their servers. Please also use the recommended `-w2` option with wget for some space between file downloads.
+- For a more complete single-step downloader with video and metadata support, please head over to
+  [schlabber](https://github.com/Blickfeldkurier/schlabber).
 
 Usage
 -----
