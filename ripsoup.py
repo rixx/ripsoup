@@ -53,7 +53,7 @@ def get_src(url):
     path = Path(url)
     if path.stem.endswith("_500"):
         extension = path.suffix
-        url = url[:-(len(extension) + len("_500"))] + extension
+        url = url[: -(len(extension) + len("_500"))] + extension
     return url
 
 
@@ -107,7 +107,10 @@ def get_all_data(start_url):
     image_urls = get_image_data()
     while current_url:
         current_url, image_urls, related_soups = get_page_data(
-            current_url, image_urls, related_soups, session=session,
+            current_url,
+            image_urls,
+            related_soups,
+            session=session,
         )
         print(".", end="", flush=True)
 
